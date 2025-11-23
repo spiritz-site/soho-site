@@ -1,0 +1,300 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+body {
+  background: #110703;
+  color: #fff;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 25px;
+  align-items: center;
+  background: rgba(20,13,7,0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  flex-wrap: nowrap;
+}
+
+.logo img {
+  height: 100px;
+  width: auto;
+  display: block;
+}
+
+
+
+nav a {
+  margin-left: 20px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #a94923;
+}
+
+.btn {
+  padding: 8px 15px;
+  border: 1px solid #a94923;
+  border-radius: 6px;
+}
+
+
+.work-time {
+  margin-top: 40px;   /* вот это расстояние между кнопкой и временем */
+  font-size: 16px;
+  color: #fff;
+  opacity: 0.85;
+  text-align: center;
+}
+
+.hero {
+  height: 100vh;
+  background: url("bg.png")
+      center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+}
+
+.hero-content h1 {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.hero-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #a94923;;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 8px;
+  position: relative; /* важно */
+  z-index: 2;
+}
+
+.hero-btn {
+  transition: 0.3s ease;
+  transform: translateY(0);
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+}
+.social-icon {
+  transition: transform 0.25s cubic-bezier(.17,.67,.83,1.36);
+}
+
+.social-icon:hover {
+  transform: scale(1.15);
+}
+
+header {
+  opacity: 0;
+  animation: fadeHeader 0.8s ease forwards;
+}
+
+@keyframes fadeHeader {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+section {
+  padding: 80px 40px;
+  text-align: center;
+}
+
+
+.book-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 15px 25px;
+  background: #25D366; /* цвет WhatsApp */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 20px;
+  position: relative;  /* важно */
+  z-index: 2;
+}
+
+
+footer {
+  padding: 30px;
+  background: #000;
+  text-align: center;
+  margin-top: 40px;
+
+  
+
+}
+
+.social-links {
+  margin-top: 15px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 15px;
+}
+
+.social-links a img.social-icon {
+  width: 40x;    /* размер иконки */
+  height: 40px;
+  transition: 0.3s;
+}
+
+.social-links a img.social-icon:hover {
+  transform: scale(1.2); /* эффект при наведении */
+}
+
+/* Для экранов до 768px (планшет/мобильный) */
+@media screen and (max-width: 768px) {
+  .vip-grid {
+    grid-template-columns: 1fr; /* VIP комнаты в одну колонку */
+  }
+
+  .menu-block {
+    max-width: 100%; /* еда и бар будут по ширине экрана */
+  }
+
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hero-content h1 {
+    font-size: 30px; /* меньше заголовок на телефоне */
+  }
+
+  .hero-btn,
+  .book-btn {
+    width: 100%; /* кнопки растягиваются */
+    text-align: center;
+  }
+  
+}
+
+.menu-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.menu-btn {
+  padding: 10px 20px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.menu-btn.active {
+  background: #a94923;
+}
+
+/* Слайдер */
+.slider {
+  position: relative;
+  overflow: hidden;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.slides-wrapper {
+  position: relative;
+}
+
+.slides {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.slide {
+  display: none;
+}
+
+.slide.active {
+  display: block;
+}
+
+
+.slide.active {
+  display: block;
+  text-align: center;
+}
+
+.slide img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+/* Стрелки */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(215,47,63,0.8);
+  border: none;
+  color: white;
+  font-size: 20px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  z-index: 10;
+}
+
+.prev { left: 0; }
+.next { right: 0; }
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+@media screen and (max-width: 768px) {
+  header {
+    padding: 8px 10px;
+  }
+
+  nav a {
+    font-size: 15px;
+  }
+nav {
+    gap: 10px; /* меньше расстояние между пунктами */
+  }
+  .logo img {
+    height: 60px;
+  }
+}
+
+/* Анимация появления */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SoHo — Karaoke & Bar </title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+ <header>
+  <div class="logo">
+    <img src="logo.png" alt="Soho Logo">
+  </div>
+
+  <nav>
+    <a href="#about">О нас</a>
+    <a href="#menu">Меню</a>
+    <a href="#booking" class="btn">Бронирование</a>
+    
+  </nav>
+</header>
+
+  <!-- HERO BLOCK -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>SoHo — Karaoke & Bar</h1>
+      <p>Караоке на 2 этажах · 9 уникальных VIP-комнат · Общий зал · Высокий сервис</p>
+      <a href="#booking" class="hero-btn">Забронировать</a>
+      <p class="work-time">
+        <strong>
+  Пн-Вс | 14:00 - 02:00<br>
+  Пт-Сб | 14:00 - 04:00
+      </strong>
+</p>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+  <h2>О заведении</h2>
+
+  <p>
+    Soho — современный Караоке-бар.  
+    Стильный интерьер, богатый бар, изысканная кухня и любимые песни.  
+    Наш адрес: <strong>ул. Конаева 8, Кызылорда</strong>.
+  </p>
+
+  <!-- Кнопка 2ГИС -->
+  <a target="_blank" 
+     href="https://2gis.kz/kyzylorda/geo/70000001082664066" 
+     class="hero-btn">
+     Открыть в 2GIS
+  </a>
+
+  <!-- Соцсети -->
+  <div class="social-links">
+    <a href="https://www.instagram.com/soho.kzo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+      <img src="instagram.png" alt="Instagram" class="social-icon">
+    </a>
+
+    <a href="https://wa.me/77076990808" target="_blank">
+      <img src="whatsapp.png" alt="WhatsApp" class="social-icon">
+    </a>
+  </div>
+
+
+<section id="menu-slider" class="menu-slider">
+  <h2 style="text-align:center;">Наше меню</h2>
+
+  <!-- Кнопки выбора -->
+  <div class="menu-buttons">
+    <button class="menu-btn active" data-slider="food">Меню</button>
+    <button class="menu-btn" data-slider="bar">Бар</button>
+  </div>
+
+ <!-- Слайдер -->
+<div class="slider">
+  <button class="prev">&#10094;</button>
+
+  <div class="slides-wrapper">
+
+    <!-- Меню -->
+    <div class="slides active" id="food">
+      <div class="slide active"><img src="menu1.jpg" alt="1"></div>
+      <div class="slide"><img src="menu2.jpg" alt="2"></div>
+      <div class="slide"><img src="menu3.jpg" alt="3"></div>
+      <div class="slide"><img src="menu4.jpg" alt="4"></div>
+      <div class="slide"><img src="menu5.jpg" alt="5"></div>
+    </div>
+
+    <!-- Бар -->
+    <div class="slides" id="bar">
+      <div class="slide active"><img src="bar1.jpg" alt="1"></div>
+      <div class="slide"><img src="bar2.jpg" alt="2"></div>
+    </div>
+
+  </div> <!-- ← Вот ЭТОГО закрытия не хватало -->
+  
+  <button class="next">&#10095;</button>
+</div>
+
+
+  
+  </div>
+</section>
+
+
+<style>
+.menu-buttons { display: flex; gap: 10px; margin-bottom: 20px; }
+.menu-btn { padding: 10px 20px; background: #333; color: white; border: none; border-radius: 8px; cursor: pointer; }
+.menu-btn.active { background: #a94923; }
+
+.slider { position: relative; overflow: visible; max-width: 600px; margin: 0 auto; }
+.slides-wrapper { position: relative; }
+.slides { display: none; }
+.slides.active { display: block; }
+.slide { display: none; text-align: center; }
+.slide.active { display: block; }
+.slide img { width: 100%; border-radius: 12px; margin-bottom: 10px; }
+.prev, .next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(169, 73, 35, 0.8); border: none; color: white; font-size: 24px; padding: 8px 12px; cursor: pointer; border-radius: 8px; z-index: 10; }
+.prev { left: -50px; } .next { right: -50px; }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var menuBtns = document.querySelectorAll(".menu-btn");
+  var sliders = document.querySelectorAll(".slides");
+  var currentSlideIndex = 0;
+
+  function showSlide(slider, index) {
+    var slides = slider.querySelectorAll(".slide");
+    for (var i = 0; i < slides.length; i++) { slides[i].classList.remove("active"); }
+    slides[index].classList.add("active");
+  }
+
+  // Переключение между категориями
+  for (var i = 0; i < menuBtns.length; i++) {
+    menuBtns[i].addEventListener("click", function() {
+      for (var j = 0; j < menuBtns.length; j++) { menuBtns[j].classList.remove("active"); }
+      this.classList.add("active");
+
+      for (var k = 0; k < sliders.length; k++) { sliders[k].classList.remove("active"); }
+
+      var sliderId = this.getAttribute("data-slider");
+      var slider = document.getElementById(sliderId);
+      slider.classList.add("active");
+
+      currentSlideIndex = 0;
+      showSlide(slider, currentSlideIndex);
+    });
+  }
+
+  // Стрелки
+  var nextBtn = document.querySelector(".next");
+  var prevBtn = document.querySelector(".prev");
+
+  nextBtn.addEventListener("click", function() {
+    var activeSlider = document.querySelector(".slides.active");
+    var slides = activeSlider.querySelectorAll(".slide");
+    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+    showSlide(activeSlider, currentSlideIndex);
+  });
+
+  prevBtn.addEventListener("click", function() {
+    var activeSlider = document.querySelector(".slides.active");
+    var slides = activeSlider.querySelectorAll(".slide");
+    currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+    showSlide(activeSlider, currentSlideIndex);
+  });
+
+  // Инициализация
+  var initialSlider = document.querySelector(".slides.active");
+  showSlide(initialSlider, 0);
+});
+</script>
+
+
+ 
+  <!-- BOOKING -->
+  <section id="booking" class="booking">
+    <h2>Бронирование</h2>
+    <a target="_blank" 
+       href="https://wa.me/77076990808?text=Здравствуйте! Хочу забронировать у вас стол/зал в Soho."
+       class="book-btn">
+       Забронировать в WhatsApp
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© Этот сайт сделан <a href="https://t.me/enzzoxvii" target="_blank" style="color:#1DA1F2; text-decoration:none;">Жандосом</a> специально для Soho — Karaoke & Bar · 2025</p>
+  </footer>
+  
+  <section class="fade-in">...</section>
+
+
+</body>
+</html>
