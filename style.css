@@ -136,15 +136,8 @@ section {
 }
 
 
-footer {
-  padding: 30px;
-  background: #000;
-  text-align: center;
-  margin-top: 40px;
-
+footer { padding: 50px 40px; text-align: center; opacity: .7; margin-top: 80px; font-size: 14px; }
   
-
-}
 
 .social-links {
   margin-top: 15px;
